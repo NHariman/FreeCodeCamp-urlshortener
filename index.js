@@ -48,7 +48,9 @@ app.get("/api/shorturl/:shortUrl", function(req, res) {
         error: "No short URL found for the given input"
       });
     } else {
-      window.location.replace(foundUrl.fullUrl);
+      res.writeHead(301, { Location: foundUrl.fullUrl });
+      res.end();
+      // window.location.replace(foundUrl.fullUrl);
     }
   }
 });
